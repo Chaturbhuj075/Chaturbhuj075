@@ -8,7 +8,6 @@ import json
 import os
 import re
 from collections import Counter
-from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
 from urllib.request import Request, urlopen
@@ -90,7 +89,8 @@ def collect_stats(username: str) -> dict:
     for repository in repositories:
         repository_name = quote(repository["name"], safe="")
         base_path = f"/repos/{escaped_username}/{repository_name}"
-        repository_commits += count_items(f"{base_path}/commits")
+        if repository["name"].casefold() != username.casefold():
+            repository_commits += count_items(f"{base_path}/commits")
         languages, _ = request_json(f"{base_path}/languages")
         if isinstance(languages, dict):
             language_bytes.update(
@@ -126,7 +126,6 @@ def render_svg(stats: dict) -> str:
     username = html.escape(str(stats["username"]))
     display_name = html.escape(str(stats["display_name"]))
     location = html.escape(str(stats["location"]))
-    updated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     languages = language_summary(stats.get("languages", {}))
 
     bar_x = 52.0
@@ -197,12 +196,12 @@ def render_svg(stats: dict) -> str:
   <text x="600" y="203" class="value">{int(stats['public_repos'])}</text>
   <text x="708" y="203" class="label">Stars</text>
   <text x="900" y="203" class="value">{int(stats['stars'])}</text>
-  <text x="430" y="240" class="label">Repo commits</text>
+  <text x="430" y="240" class="label">Project commits</text>
   <text x="600" y="240" class="value">{int(stats['repository_commits'])}</text>
   <text x="708" y="240" class="label">Followers</text>
   <text x="900" y="240" class="value">{int(stats['followers'])}</text>
   <text x="430" y="276" class="small">Location: {location}</text>
-  <text x="430" y="296" class="muted">Updated hourly · {updated_at}</text>
+  <text x="430" y="296" class="muted">Refreshes hourly from GitHub's API</text>
   <text x="52" y="333" class="heading">LANGUAGES IN PUBLIC REPOSITORIES</text>
   {''.join(bar_parts)}
   {''.join(legend_parts)}
