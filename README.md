@@ -19,7 +19,7 @@ Career path   : Software Development → Cybersecurity
 
 ![Live public GitHub statistics](assets/github-profile-stats.svg)
 
-> Repository statistics and language usage refresh automatically every hour from GitHub's API. "Repo commits" counts commits currently present in the default branches of public, owned repositories.
+> Repository statistics and language usage refresh automatically every hour from GitHub's API. "Project commits" counts commits in the default branches of public, owned repositories while excluding this automated profile repository.
 
 ## `$ cat tech-stack.txt`
 
