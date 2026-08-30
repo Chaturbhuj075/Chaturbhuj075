@@ -23,12 +23,12 @@
   <text x="600" y="203" class="value">5</text>
   <text x="708" y="203" class="label">Stars</text>
   <text x="900" y="203" class="value">0</text>
-  <text x="430" y="240" class="label">Repo commits</text>
-  <text x="600" y="240" class="value">22</text>
+  <text x="430" y="240" class="label">Project commits</text>
+  <text x="600" y="240" class="value">17</text>
   <text x="708" y="240" class="label">Followers</text>
   <text x="900" y="240" class="value">0</text>
   <text x="430" y="276" class="small">Location: India</text>
-  <text x="430" y="296" class="muted">Updated hourly · 2026-08-30 10:34 UTC</text>
+  <text x="430" y="296" class="muted">Refreshes hourly from GitHub's API</text>
   <text x="52" y="333" class="heading">LANGUAGES IN PUBLIC REPOSITORIES</text>
   <rect x="52.00" y="349.0" width="896.00" height="12" fill="#3572A5" rx="2" />
   <circle cx="57" cy="386" r="5" fill="#3572A5" /><text x="69" y="391" class="small">Python 100.0%</text>
